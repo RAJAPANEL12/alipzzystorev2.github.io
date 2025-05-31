@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlipzzyOfficiaL</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f8f8f8; /* Light white background */
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px; /* Padding for the container */
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff; /* Blue link color */
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #ffffff; /* White navbar background */
+            padding: 15px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between; /* Pushes logo to left, nav items/hamburger to right */
+            align-items: center; /* Vertically aligns items */
+            height: 40px; /* Adjust height for consistent vertical alignment */
+        }
+
+        .navbar .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #007bff; /* Blue logo color */
+        }
+
+        .navbar .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex; /* Make links horizontal on desktop */
+            align-items: center; /* Vertically align items */
+        }
+
+        .navbar .nav-links li {
+            margin-left: 30px; /* Space between items */
+        }
+
+        .navbar .nav-links a {
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #0056b3; /* Darker blue on hover */
+        }
+
+        /* Hamburger Menu for Mobile */
+        .hamburger {
+            display: none; /* Hidden by default on desktop */
+            font-size: 2em;
+            cursor: pointer;
+            color: #007bff;
+        }
+
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none; /* Hide horizontal menu on mobile by default */
+                flex-direction: column; /* Stack vertically when shown */
+                width: 100%;
+                background-color: #ffffff;
+                position: absolute;
+                top: 70px; /* Adjust based on navbar height to appear below it */
+                left: 0;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                padding: 10px 0;
+            }
+
+            .navbar .nav-links.active {
+                display: flex; /* Show menu when active on mobile */
+            }
+
+            .navbar .nav-links li {
+                margin: 10px 20px; /* Spacing for vertical menu */
+                text-align: center;
+            }
+
+            .hamburger {
+                display: block; /* Show hamburger on mobile */
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #e0f2f7; /* Light blue background */
+            padding: 80px 0;
+            text-align: center;
+            color: #333;
+            border-bottom: 1px solid #cce7ee;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero .btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 60px 0;
+            text-align: center;
+            background-color: #ffffff; /* White background */
+        }
+
+        .products h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: #007bff;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .product-card {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #007bff;
+        }
+
+        .product-card p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .product-card .price {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #28a745; /* Green price color */
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .product-card .btn-buy {
+            background-color: #28a745; /* Green buy button */
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .product-card .btn-buy:hover {
+            background-color: #218838;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #ffffff;
+            color: #555;
+            text-align: center;
+            padding: 25px 0;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.9em;
+        }
+
+        .footer a {
+            color: #007bff;
+            font-weight: 500;
+        }
+
+        .footer a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">AlipzzyOfficiaL</a>
+            <div class="hamburger">&#8801;</div> <ul class="nav-links">
+                <li><a href="#products-section">Produk</a></li>
+                <li><a href="https://wa.me/6281399649577" target="_blank">WhatsApp</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>AlipzzyOfficiaL</h1>
+            <p>Solusi hosting murah dan terpercaya untuk kebutuhan online Anda.</p>
+            <a href="#products-section" class="btn">Mulai Sekarang</a>
+        </div>
+    </section>
+
+    <section id="products-section" class="products">
+        <div class="container">
+            <h2>Produk Kami</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <h3>Panel Pterodactyl Bot WhatsApp Unlimited</h3>
+                    <p>Panel Bot WhatsApp Unlimited Ram & Disk</p>
+                    <span class="price">Rp 10.000</span>
+                    <a href="https://wa.me/6281399649577?text=Bang mau beli panel unli dengan harga 10k" target="_blank" class="btn-buy">Beli Sekarang</a>
+                </div>
+
+                <div class="product-card">
+                    <h3>Domain .my.id</h3>
+                    <p>Domain Murah Untuk Website Anda</p>
+                    <span class="price">Rp 10.000</span>
+                    <a href="https://wa.me/6281399649577?text=Bang mau beli domain .my.id dengan harga 10k" target="_blank" class="btn-buy">Beli Sekarang</a>
+                </div>
+
+                <div class="product-card">
+                    <h3>VPS Digital Ocean Ram 16 Core 4</h3>
+                    <p>VPS Ram 16 Core 4 Dengan Harga Terjangkau Dan Kualitas Terjamin</p>
+                    <span class="price">Rp 50.000</span>
+                    <a href="https://wa.me/6281399649577?text=Bang mau beli vps ram 16 core 4 dengan harga 50k" target="_blank" class="btn-buy">Beli Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            &copy; Pembuat Website <a href="https://wa.me/6281326879690" target="_blank">AlipzzyOfficiaL</a>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Toggle mobile menu
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked (for mobile)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Add shadow to navbar on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) { // Adjust value as needed
+                navbar.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.15)';
+            } else {
+                navbar.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
